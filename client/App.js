@@ -1,13 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { globalStyles } from './styles/globalStyles';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import DrawerNavigator from './routes/DrawerNavigator';
 
-export default function App() {
+const App = () => {
   return (
-    <View style={globalStyles.container}>
-      <Text>React native template J.C.A.M</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
   );
-}
+};
 
+export default App;
