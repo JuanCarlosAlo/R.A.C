@@ -9,7 +9,12 @@ const Stack = createNativeStackNavigator();
 
 const SearchStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Details" component={CarDetails} />
     </Stack.Navigator>
