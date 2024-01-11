@@ -20,14 +20,8 @@ const io = new Server(httpServer, {
 // Rutas
 
 const usersRoutes = require("./routes/users.routes");
-const appetizersRoutes = require('./routes/appetizers.routes');
-const drinksRoutes = require('./routes/drinks.routes');
-const snacksRoutes = require('./routes/snacks.routes');
-const mainRoutes = require('./routes/main.routes');
-const CartRoutes = require('./routes/cart.routes');
-const RecomendedRoutes = require('./routes/recomended.routes');
-const ordersRoutes = require('./routes/orders.routes');
-const reviewsRoutes = require('./routes/reviews.routes');
+const carsRoutes = require("./routes/cars.routes");
+
 
 // Middlewares para cliente
 app.use(cors());
@@ -45,7 +39,7 @@ io.on("connection", (socket) => {
     // Maneja la solicitud de cambio de colección
     socket.on("startCollectionListener", () => {
         // Establece el cambio de flujo (change stream) en la colección
-        const collectionUsers = client.db("Bites").collection("users");
+        const collectionUsers = client.db("RAC").collection("users");
         const changeStreamUsers = collectionUsers.watch();
 
         // Escucha los eventos de cambio en el flujo y los emite a través del socket
@@ -67,14 +61,8 @@ io.on("connection", (socket) => {
 
 
 app.use("/users", usersRoutes);
-app.use("/appetizers", appetizersRoutes);
-app.use("/drinks", drinksRoutes);
-app.use("/snacks", snacksRoutes);
-app.use("/main", mainRoutes);
-app.use("/cart", CartRoutes);
-app.use("/recomended", RecomendedRoutes);
-app.use("/orders", ordersRoutes);
-app.use("/reviews", reviewsRoutes);
+app.use("/cars", carsRoutes);
+
 
 
 // Inicia el servidor
