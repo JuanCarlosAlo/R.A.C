@@ -1,6 +1,6 @@
 import uuid from 'react-native-uuid';
 import { COLORS } from './colors';
-import { brandImages } from './allBrands';
+import { ALL_BRANDS } from './allBrands';
 
 export const BANNER_SECTION = {
     title: 'No compres coche. Hazte un R.A.C',
@@ -28,9 +28,9 @@ export const SECTIONS = [
     {
         title: 'Elige tu coche entre las mejores marcas',
         _id: uuid.v4(),
-        icons: brandImages.map((img) => ({
-            _id: uuid.v4(),
-            img,
+        icons: ALL_BRANDS.map((brand) => ({
+            _id: brand._id,
+            img: brand.img,
         })),
     },
 ];
