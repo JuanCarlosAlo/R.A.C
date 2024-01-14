@@ -6,11 +6,10 @@ const UsersScheme = mongoose.Schema(
     email: String,
     userName: String,
     type: String,
-    address: String,
-    orders: [
+    history: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "orders",
+        ref: "cars",
       },
     ],
 

@@ -32,17 +32,14 @@ const uri = process.env.MONGODB_URL;
 const client = new MongoClient(uri);
 mongoose.set("strictQuery", false);
 
-// Maneja la conexión de Socket.io
 io.on("connection", (socket) => {
     console.log("Cliente conectado");
 
-    // Maneja la solicitud de cambio de colección
+
     socket.on("startCollectionListener", () => {
-        // Establece el cambio de flujo (change stream) en la colección
         const collectionUsers = client.db("RAC").collection("users");
         const changeStreamUsers = collectionUsers.watch();
 
-        // Escucha los eventos de cambio en el flujo y los emite a través del socket
         changeStreamUsers.on("change", (change) => {
             socket.emit("collectionUsersChange", change);
         });
@@ -50,7 +47,6 @@ io.on("connection", (socket) => {
 
     });
 
-    // Maneja la desconexión del cliente
     socket.on("disconnect", () => {
         console.log("Cliente desconectado");
     });
