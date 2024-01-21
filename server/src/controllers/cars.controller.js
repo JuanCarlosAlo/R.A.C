@@ -24,17 +24,29 @@ controller.getCarId = async (req, res) => {
 
 controller.createCar = async (req, res) => {
   try {
-    const { name, brand, fuel, type,img } = req.body;
+    const { model, brand, fuel, type,img,price,year,doors,seats,power,engine,transmition,emissions } = req.body;
     const newId = v4();
 
     const newCar = await new CarsModel({
       _id: newId,
-      name,
+      model,
       brand,
       type,
       fuel,
+      price,
       img,
+      inSale:false,
       avaliable: true,
+      details:{
+            year,
+            doors,
+            seats,
+            power,
+            engine,
+            transmition,
+            fuel,
+            emissions,
+      }
     });
 
     const carExist = await CarsModel.findOne({ name });

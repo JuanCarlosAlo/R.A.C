@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {  Text, TouchableOpacity, View } from "react-native";
 import SearchBanner from "../../components/search-banner/SearchBanner";
 import { Picker } from "@react-native-picker/picker";
 import SearchModal from "../../components/modal-search/SearchModal";
+import CarList from "../../components/car-list/CarList";
 
 const Search = () => {
+ 
   const [selectedSortOrder, setSelectedSortOrder] = useState("title");
   const [priceRange, setPriceRange] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,7 +25,7 @@ const Search = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView>
+      
         <SearchBanner />
         <View style={{ padding: 20 }}>
           <Picker
@@ -38,7 +40,7 @@ const Search = () => {
             <Text>Mostrar Filtros Avanzados</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      <CarList/>
       <SearchModal
         handleApplyFilters={handleApplyFilters}
         modalVisible={modalVisible}

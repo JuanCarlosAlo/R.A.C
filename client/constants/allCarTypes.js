@@ -4,21 +4,21 @@ export const ALL_CAR_TYPES = [
     {
         _id: uuidv4(),
         label: "Compacto",
-        value: "compact",
+        value: "Compact",
     },
     {
         _id: uuidv4(),
         label: "SUV",
-        value: "suv",
+        value: "SUV",
     },
     {
         _id: uuidv4(),
         label: "Sedan",
-        value: "sedan",
+        value: "Sedan",
     },
     {
         _id: uuidv4(),
         label: "Deportivo",
-        value: "sporty",
+        value: "Sporty",
     }
 ]
