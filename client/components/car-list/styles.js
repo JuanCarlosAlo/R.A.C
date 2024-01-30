@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { COLORS } from "../../constants/colors";
 import { Platform } from "react-native";
 
-const StyledCarCard = styled.View`
+const StyledCarCard = styled.TouchableOpacity`
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;

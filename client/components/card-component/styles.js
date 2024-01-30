@@ -3,9 +3,8 @@ import styled from 'styled-components/native';
 import { COLORS } from '../../constants/colors';
 
 const StyledCardComponent = styled.View`
-  background-color: #fff;
+   background-color: #fff;
   padding: 20px;
-  margin: 10px;
   border-radius: 10px;
   gap: 16px;
   width: 100%;
@@ -13,13 +12,16 @@ const StyledCardComponent = styled.View`
   ${Platform.OS === 'ios'
     ? `
       shadow-color: ${COLORS.PRIMARY};
-      shadow-offset: { width: 0, height: 0 };
+      shadow-offset: { width: 2px, height: 2px };
       shadow-opacity: 0.25;
-      shadow-radius: 4;
+      shadow-radius: 4px;
     `
     : `
       elevation: 6;
       shadow-color: ${COLORS.PRIMARY};
+      shadow-offset: 2px 2px; 
+      shadow-opacity: 0.3;
+      shadow-radius: 4px;
     `
   }
 `;

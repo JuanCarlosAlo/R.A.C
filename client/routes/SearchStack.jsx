@@ -16,7 +16,9 @@ const SearchStack = () => {
       }}
     >
       <Stack.Screen name="Search" component={Search} />
-      <Stack.Screen name="Details" component={CarDetails} />
+      <Stack.Screen name="Details" component={CarDetails} options={{
+          headerShown: true, 
+        }}/>
     </Stack.Navigator>
   );
 };

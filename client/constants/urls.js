@@ -9,5 +9,6 @@ export const USERS_URLS = {
 };
 
 export const CARS_URLS = {
-	ALL_CARS: BASE + 'cars/all-cars'
+	ALL_CARS: BASE + 'cars/all-cars',
+	GET_CAR_BY_ID: BASE + 'cars/carById/',
 }

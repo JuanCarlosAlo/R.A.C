@@ -11,7 +11,7 @@ const Section = ({ section, cards }) => {
         gap: 10,
         paddingVertical: 16,
         paddingHorizontal: 16,
-        backgroundColor: "#fff",
+        backgroundColor: section?.background,
       }}
     >
       <Text style={{ color: section?.color }}>{section?.title}</Text>

@@ -1,103 +1,55 @@
+import React from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
 import Slider from "@react-native-community/slider";
-import { Picker } from "@react-native-picker/picker";
-import { ALL_BRANDS } from "../../constants/allBrands";
-import { ALL_FUEL_TYPES } from "../../constants/allFuelTypes";
-import { ALL_CAR_TYPES } from "../../constants/allCarTypes";
+import { FILTER_ACTIONS } from "../../actions/actions.filter";
+import { ALL_CAR_BRANDS, ALL_CAR_TYPES, ALL_FUEL_TYPES } from "../../constants/filterOptions";
+import FilterPicker from "../filterPicker/FilterPicker";
 
-const SearchModal = ({
-  setModalVisible,
-  modalVisible,
-  priceRange,
-  setPriceRange,
-  handleApplyFilters,
-  setFilters,
-  filters,
-}) => {
+const SearchModal = ({ dispatch, state }) => {
+ 
+
+  const setPriceRange = (value) => {
+    dispatch({ type: FILTER_ACTIONS.SET_PRICE_RANGE, payload: value });
+  };
+
+  const setFilters = (newFilters) => {
+    dispatch({ type: FILTER_ACTIONS.SET_FILTERS, payload: newFilters });
+  };
+
+  const handleApplyFilters = () => {
+    dispatch({ type: FILTER_ACTIONS.SET_MODAL_VISIBLE, payload: false });
+   
+  };
+
   return (
     <Modal
       animationType="slide"
       transparent={false}
-      visible={modalVisible}
-      onRequestClose={() => setModalVisible(false)}
+      visible={state.modalVisible}
+      onRequestClose={() => dispatch({ type: FILTER_ACTIONS.SET_MODAL_VISIBLE, payload: false })}
+      
     >
       <View style={{ marginTop: 22 }}>
         <View>
           <Text>Selecciona las opciones de filtro:</Text>
 
-          <Text>Rango de Precio: ${priceRange}</Text>
+          <Text>Rango de Precio: ${state.priceRange}</Text>
           <Slider
             style={{ width: 200, height: 40 }}
             minimumValue={0}
             maximumValue={10000}
             step={100}
-            defaultValue={priceRange}
-            value={priceRange}
+            defaultValue={state.priceRange}
+            value={state.priceRange}
             onValueChange={(value) => setPriceRange(value)}
           />
-          <Picker
-            selectedValue={filters.brand}
-            onValueChange={(value) => setFilters({ ...filters, brand: value })}
-          >
-            <Picker.Item
-              label="Elige una marca"
-              value="brand"
-              enabled={false}
-            />
-            <Picker.Item
-              label="Todas las marcas"
-              value=""
-             
-            />
-            {ALL_BRANDS.map((brand) => (
-              <Picker.Item
-                label={brand.label}
-                value={brand.value}
-                key={brand._id}
-              />
-            ))}
-          </Picker>
-          <Picker
-            selectedValue={filters.fuel}
-            onValueChange={(value) => setFilters({ ...filters, fuel: value })}
-          >
-            <Picker.Item
-              label="Elige un combustible"
-              value="fuel"
-              enabled={false}
-            />
-               {ALL_FUEL_TYPES.map((fuel) => (
-              <Picker.Item
-                label={fuel.label}
-                value={fuel.value}
-                key={fuel._id}
-              />
-            ))}
-            
-          </Picker>
-
-          <Picker
-            selectedValue={filters.type}
-            onValueChange={(value) => setFilters({ ...filters, type: value })}
-          >
-            <Picker.Item
-              label="Elige un tipo"
-              value="type"
-              enabled={false}
-            />
-               {ALL_CAR_TYPES.map((type) => (
-              <Picker.Item
-                label={type.label}
-                value={type.value}
-                key={type._id}
-              />
-            ))}
-            
-          </Picker>
+          <FilterPicker array={ALL_CAR_BRANDS} setFilters={setFilters} state={state} valueKey={'brand'} />
+          <FilterPicker array={ALL_FUEL_TYPES} setFilters={setFilters} state={state} valueKey={'fuel'} />
+          <FilterPicker array={ALL_CAR_TYPES} setFilters={setFilters} state={state} valueKey={'type'} />
           <TouchableOpacity onPress={handleApplyFilters}>
             <Text>Aplicar Filtros</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setModalVisible(false)}>
+          <TouchableOpacity onPress={() => dispatch({ type: FILTER_ACTIONS.SET_MODAL_VISIBLE, payload: false })}>
             <Text>Cancelar</Text>
           </TouchableOpacity>
         </View>

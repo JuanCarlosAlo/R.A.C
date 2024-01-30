@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 export const ALL_BRANDS = [
+ 
   {
     _id: uuidv4(),
     img: require(`../assets/images/brands/1.png`),
