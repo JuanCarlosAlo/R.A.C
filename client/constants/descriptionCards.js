@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import uuid from 'react-native-uuid';
 
 export const DESCRIPTION_CARDS = [

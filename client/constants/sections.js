@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import uuid from 'react-native-uuid';
 import { COLORS } from './colors';
 import { ALL_BRANDS } from './allBrands';

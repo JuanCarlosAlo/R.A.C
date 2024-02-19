@@ -17,7 +17,6 @@ import { auth } from '../../config/firebase.config';
 
 const Register = () => {
   const { currentUser ,loadingFirebase} = useContext(AuthContext);
-  // const [firebaseErrors, setFirebaseErrors] = useState('');
   const { control, handleSubmit, formState: { errors } } = useForm({ mode: 'onBlur' });
   const { data, loading, error, setFetchInfo } = useFetch({ url: USERS_URLS.ALL_USERS });
   const navigation = useNavigation();
