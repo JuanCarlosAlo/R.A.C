@@ -9,7 +9,7 @@ import { FILTER_ACTIONS } from "../../actions/actions.filter";
 
 const Search = () => {
   const [state, dispatch] = useReducer(filterReducer, INITIAL_STATE_FILTER);
-
+  
   const handleChangeSortOrder = (value) => {
     dispatch({ type: FILTER_ACTIONS.SET_SORT_ORDER, payload: value });
   };
@@ -23,7 +23,7 @@ const Search = () => {
             selectedValue={state.selectedSortOrder}
             onValueChange={handleChangeSortOrder}
           >
-            <Picker.Item label="Ordenar" value="title" enabled={false} />
+            <Picker.Item label="Ordenar" value="" enabled={false} />
             <Picker.Item label="Menor a Mayor Precio" value="asc" />
             <Picker.Item label="Mayor a Menor Precio" value="desc" />
           </Picker>
@@ -31,7 +31,7 @@ const Search = () => {
             <Text>Mostrar Filtros Avanzados</Text>
           </TouchableOpacity>
         </View>
-      <CarList/>
+      <CarList filters={state}/>
       <SearchModal
         dispatch={dispatch}
         state={state}

@@ -14,7 +14,8 @@ import {
 } from "./styles";
 
 
-const CarList = () => {
+const CarList = ({filters}) => {
+
   const { loading, error, data } = useFetch({ url: CARS_URLS.ALL_CARS });
   const navigation = useNavigation();
   if (loading) {

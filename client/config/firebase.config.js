@@ -1,17 +1,10 @@
-// Import the functions you need from the SDKs you need
+// Importar las funciones necesarias de los SDK que necesitas
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeAuth, getAuth } from 'firebase/auth'; // Corregir la importación aquí
+import { getReactNativePersistence } from 'firebase/auth'; // Eliminar la importación redundante
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'; // Agregar la importación de ReactNativeAsyncStorage
 
-import { collection, getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// Import the functions you need from the SDKs you need
-
-
-// Your web app's Firebase configuration
+// Configuración de tu aplicación Firebase
 const firebaseConfig = {
 	apiKey: "AIzaSyCqJT46EKfKJfuWy-xR3CM-aib7lEEOvWA",
 	authDomain: "racapp-f3d6c.firebaseapp.com",
@@ -20,14 +13,12 @@ const firebaseConfig = {
 	messagingSenderId: "637164010629",
 	appId: "1:637164010629:web:2dee608ccfcf9befa57dec",
 	measurementId: "G-XTVP4FEBDS"
-  };
-// Initialize Firebase
+};
+
+// Inicializar la aplicación Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-export const profileImgCollectionRefference = collection(db, 'ProfileImg');
-
-export const storage = getStorage(app);
-
-// Authentication Module
-export const auth = getAuth(app);
+// Inicializar el servicio de autenticación de Firebase
+export const auth = initializeAuth(app, {
+	persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});

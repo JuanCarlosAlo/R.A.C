@@ -1,10 +1,10 @@
-// CustomHeader.js
-
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView, Text, TouchableOpacity } from "react-native";
 import { statusBarHeight } from "../../constants/measurements";
+import { AuthContext } from "../../context/Auth.context";
 
 const CustomHeader = ({ navigation }) => {
+  const { currentUser } = useContext(AuthContext);
   return (
     <SafeAreaView
       style={{
@@ -22,10 +22,22 @@ const CustomHeader = ({ navigation }) => {
       </TouchableOpacity>
 
       <Text>R.A.C</Text>
-
-      <TouchableOpacity onPress={() => console.log("user")}>
+      {!currentUser ? (
+        <>
+          <TouchableOpacity onPress={() =>  navigation.navigate("Register")}>
+          <Text>Register</Text>
+        </TouchableOpacity>
+         <TouchableOpacity onPress={() =>  navigation.navigate("Login")}>
+         <Text>Login</Text>
+       </TouchableOpacity>
+       </>
+      ):(
+        <TouchableOpacity onPress={() => console.log(currentUser)}>
         <Text>👤</Text>
       </TouchableOpacity>
+
+      )}
+     
     </SafeAreaView>
   );
 };

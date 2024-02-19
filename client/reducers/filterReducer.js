@@ -11,7 +11,6 @@ export const INITIAL_STATE_FILTER = {
     },
   };
 export const filterReducer = (state, action) => {
-  console.log(action, state);
 
   switch (action.type) {
     case FILTER_ACTIONS.SET_SORT_ORDER:

@@ -1,11 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import DrawerNavigator from './routes/DrawerNavigator';
+import { AuthProvider } from './providers/Auth.provider';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <DrawerNavigator />
+      <AuthProvider>
+        <DrawerNavigator />
+      </AuthProvider>
     </NavigationContainer>
   );
 };

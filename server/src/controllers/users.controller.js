@@ -5,7 +5,7 @@ const controller = {};
 
 controller.getAllUsers = async (req, res) => {
   const allUsers = await UserModel.find();
-
+  console.log*(allUsers)
   try {
     res.status(200).send(allUsers);
   } catch (error) {
@@ -25,17 +25,17 @@ controller.getUserId = async (req, res) => {
 
 controller.createUser = async (req, res) => {
   try {
-    const { userName, email, address, orders, type, _id } = req.body;
+    const { userName, email,  history, type, _id } = req.body;
     const newDate = Date.now();
 
     const newUser = await new UserModel({
-      _id,
-      userName,
-      email,
-      address,
-      orders,
-      accountCreated: newDate,
-      type,
+      _id ,
+    email ,
+    userName ,
+    type,
+    accountCreated: newDate,
+    history
+
     });
 
     const userExist = await UserModel.findOne({ email });

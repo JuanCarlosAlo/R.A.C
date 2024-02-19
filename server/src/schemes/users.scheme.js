@@ -6,6 +6,7 @@ const UsersScheme = mongoose.Schema(
     email: String,
     userName: String,
     type: String,
+    accountCreated:Number,
     history: [
       {
         type: mongoose.Schema.Types.ObjectId,
