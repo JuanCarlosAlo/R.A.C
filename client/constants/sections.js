@@ -1,5 +1,5 @@
-import 'react-native-get-random-values';
-import uuid from 'react-native-uuid';
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 import { COLORS } from './colors';
 import { ALL_BRANDS } from './allBrands';
 
@@ -12,23 +12,23 @@ export const SECTIONS = [
     {
         title: '¿Qué es R.A.C?',
         text: `Con R.A.C puedes tener un coche por suscripción con todo incluido y disfrutar de la manera más inteligente, económica y flexible de un coche sin necesidad de comprarlo. Sólo tendrás que conducir. Del resto nos encargamos nosotros.`,
-        _id: uuid.v4(),
+        _id: uuidv4(),
         button: true,
     },
     {
         title: 'Todo incluido en una cuota mensual',
         text: `Sin entrada y sin sorpresas. Con R.A.C paga mes a mes una cuota mensual que incluye todo lo que necesitas para disfrutar de tu coche.`,
-        _id: uuid.v4(),
+        _id: uuidv4(),
         background: COLORS.PRIMARY,
         color: COLORS.WHITE,
     },
     {
         title: '¿Cómo funciona R.A.C?',
-        _id: uuid.v4(),
+        _id: uuidv4(),
     },
     {
         title: 'Elige tu coche entre las mejores marcas',
-        _id: uuid.v4(),
+        _id: uuidv4(),
         icons: ALL_BRANDS.map((brand) => ({
             _id: brand._id,
             img: brand.img,

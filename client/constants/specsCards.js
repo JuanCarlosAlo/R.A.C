@@ -1,25 +1,26 @@
-import 'react-native-get-random-values';
-import uuid from 'react-native-uuid';
+
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 export const SPECS_CARDS = [
     {
         icon: require('../assets/images/banner.webp'),
         title: 'Seguro a todo riesgo',
-        _id: uuid.v4(),
+        _id: uuidv4(),
     },
     {
         icon: require('../assets/images/banner.webp'),
         title: 'Asistencia',
-        _id: uuid.v4(),
+        _id: uuidv4(),
     },
     {
         icon: require('../assets/images/banner.webp'),
         title: 'Mantenimiento',
-        _id: uuid.v4(),
+        _id: uuidv4(),
     },
     {
         icon: require('../assets/images/banner.webp'),
         title: 'Impuestos',
-        _id: uuid.v4(),
+        _id: uuidv4(),
     },
 ];
